@@ -1,3 +1,6 @@
+# coding: utf-8
+# By code by kafroc - https://github.com/kafroc/utilCodes
+
 import subprocess
 import sublist3r
 import sys

@@ -1,5 +1,6 @@
-# cnnvd score tool ref to http://www.cnnvd.org.cn/web/wz/bzxqById.tag?id=2&mkid=2
-# code by kafroc
+# coding: utf-8
+# By code by kafroc - https://github.com/kafroc/utilCodes
+# this tool help you calculate the cnnvd score refering to http://www.cnnvd.org.cn/web/wz/bzxqById.tag?id=2&mkid=2
 
 
 vec = ['攻击途径', '网络', '邻接', '本地', '物理']
