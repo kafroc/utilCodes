@@ -1,5 +1,5 @@
 # coding: utf-8
-# By code by kafroc - https://github.com/kafroc/utilCodes
+# code by kafroc - https://github.com/kafroc/utilCodes
 # this tool help you calculate the cnnvd score refering to http://www.cnnvd.org.cn/web/wz/bzxqById.tag?id=2&mkid=2
 
 

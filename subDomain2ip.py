@@ -1,5 +1,6 @@
 # coding: utf-8
-# By code by kafroc - https://github.com/kafroc/utilCodes
+# code by kafroc - https://github.com/kafroc/utilCodes
+# use sublist3r to scan subdomains and use dig to find all related ip
 
 import subprocess
 import sublist3r
@@ -28,7 +29,11 @@ for domain in subdomains:
     if domain == '':
         continue
     print('Dig ' + domain + ' ...')
-    cmdres = subprocess.check_output(['dig', domain, 'A']).decode().split('\n')
+    try:
+        cmdres = subprocess.check_output(
+            ['dig', domain, 'A']).decode().split('\n')
+    except:
+        continue
     for res in cmdres:
         if res == '' or res[0] == ';':
             continue
