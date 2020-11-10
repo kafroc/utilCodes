@@ -8,15 +8,14 @@ import re
 import base64
 import requests
 
-email = 'place your fofa email'
-key = 'place your fofa key'
+email = ''
+key = ''
 
 req = 'https://fofa.so/api/v1/search/all?email=' + \
     email + '&key=' + key + '&fields=port&qbase64='
 
-iplist = '''example.com
-8.8.8.8
-tmp.test.com'''
+with open('IP-domain.list', 'r') as fp:
+    lines = fp.read().split('\n')
 
 
 def isIP(strin):
@@ -30,7 +29,7 @@ def isIP(strin):
 
 fp = open('fofascan.txt', 'w')
 
-for line in iplist.split('\n'):
+for line in lines:
     if isIP(line) == False:
         if line[-1] == '.':
             line = line[:-1]
@@ -49,6 +48,6 @@ for line in iplist.split('\n'):
     res = requests.get(req + qbase64).json()
 
     print('%s --> %s\t%s' % (line, res['query'], set(res['results'])))
-    fp.write('%s --> %s\t%s' % (line, res['query'], set(res['results'])))
+    fp.write('%s\t%s --> %s\n' % (set(res['results']), line, res['query']))
 
 fp.close()
